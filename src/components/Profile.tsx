@@ -68,31 +68,31 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
 
   return (
     <div className="max-w-4xl mx-auto p-4 sm:p-6">
-      <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl shadow-2xl overflow-hidden">
+      <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden border border-blue-200/50">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-800 to-blue-700 p-4 sm:p-6">
+        <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 sm:p-8">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3 sm:space-x-4">
-              <div className="h-16 w-16 sm:h-20 sm:w-20 bg-blue-600 rounded-full flex items-center justify-center">
-                <User className="h-8 w-8 sm:h-10 sm:w-10 text-blue-100" />
+            <div className="flex items-center space-x-4 sm:space-x-6">
+              <div className="h-16 w-16 sm:h-20 sm:w-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/30">
+                <User className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
               </div>
               <div>
                 <h1 className="text-xl sm:text-2xl font-bold text-white">{user.name}</h1>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mt-2 space-y-1 sm:space-y-0">
-                  <div className="flex items-center space-x-1 text-blue-200">
-                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    <span className="text-sm">{user.rating.toFixed(1)} ({user.totalRatings} reviews)</span>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-6 mt-3 space-y-1 sm:space-y-0">
+                  <div className="flex items-center space-x-2 text-blue-100">
+                    <Star className="h-4 w-4 fill-yellow-300 text-yellow-300" />
+                    <span className="text-sm font-medium">{user.rating.toFixed(1)} ({user.totalRatings} reviews)</span>
                   </div>
-                  <div className="flex items-center space-x-1 text-blue-200">
+                  <div className="flex items-center space-x-2 text-blue-100">
                     {user.isPublic ? <Eye className="h-4 w-4" /> : <EyeOff className="h-4 w-4" />}
-                    <span className="text-sm">{user.isPublic ? 'Public Profile' : 'Private Profile'}</span>
+                    <span className="text-sm font-medium">{user.isPublic ? 'Public Profile' : 'Private Profile'}</span>
                   </div>
                 </div>
               </div>
             </div>
             <button
               onClick={() => isEditing ? handleCancel() : setIsEditing(true)}
-              className="px-4 py-2 sm:px-6 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors text-sm sm:text-base"
+              className="px-6 py-3 sm:px-8 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-xl transition-all duration-300 text-sm sm:text-base font-medium border border-white/30 hover:border-white/50"
             >
               {isEditing ? 'Cancel' : 'Edit Profile'}
             </button>
@@ -100,87 +100,93 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
         </div>
 
         {/* Content */}
-        <div className="p-4 sm:p-6 space-y-6">
+        <div className="p-6 sm:p-8 space-y-8">
           {/* Basic Info */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-blue-100">Basic Information</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold text-blue-800 flex items-center">
+                <User className="h-5 w-5 mr-2" />
+                Basic Information
+              </h3>
               
               <div>
-                <label className="block text-sm font-medium text-blue-300 mb-2">Name</label>
+                <label className="block text-sm font-medium text-blue-600 mb-3">Name</label>
                 {isEditing ? (
                   <input
                     type="text"
                     value={editedUser.name}
                     onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
-                    className="w-full px-4 py-2 bg-blue-800 border border-blue-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-3 bg-blue-50/50 border-2 border-blue-200 rounded-xl text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
                   />
                 ) : (
-                  <p className="text-blue-100">{user.name}</p>
+                  <p className="text-blue-800 font-medium">{user.name}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-blue-300 mb-2">Location</label>
+                <label className="block text-sm font-medium text-blue-600 mb-3">Location</label>
                 {isEditing ? (
                   <input
                     type="text"
                     value={editedUser.location || ''}
                     onChange={(e) => setEditedUser({ ...editedUser, location: e.target.value })}
                     placeholder="Enter your location"
-                    className="w-full px-4 py-2 bg-blue-800 border border-blue-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-3 bg-blue-50/50 border-2 border-blue-200 rounded-xl text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
                   />
                 ) : (
-                  <div className="flex items-center space-x-2 text-blue-100">
+                  <div className="flex items-center space-x-2 text-blue-800">
                     <MapPin className="h-4 w-4" />
-                    <span>{user.location || 'Not specified'}</span>
+                    <span className="font-medium">{user.location || 'Not specified'}</span>
                   </div>
                 )}
               </div>
 
               {isEditing && (
                 <div>
-                  <label className="flex items-center space-x-2">
+                  <label className="flex items-center space-x-3">
                     <input
                       type="checkbox"
                       checked={editedUser.isPublic}
                       onChange={(e) => setEditedUser({ ...editedUser, isPublic: e.target.checked })}
-                      className="rounded border-blue-600 text-blue-600 focus:ring-blue-400"
+                      className="rounded border-blue-400 text-blue-500 focus:ring-blue-400 h-4 w-4"
                     />
-                    <span className="text-blue-200">Make profile public</span>
+                    <span className="text-blue-700 font-medium">Make profile public</span>
                   </label>
                 </div>
               )}
             </div>
 
             {/* Availability */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-blue-100">Availability</h3>
-              <div className="flex items-center space-x-2 text-blue-300 mb-3">
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold text-blue-800 flex items-center">
+                <Clock className="h-5 w-5 mr-2" />
+                Availability
+              </h3>
+              <div className="flex items-center space-x-2 text-blue-600 mb-4">
                 <Clock className="h-4 w-4" />
-                <span>When are you available?</span>
+                <span className="font-medium">When are you available?</span>
               </div>
               
               {isEditing ? (
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {availabilityOptions.map((option) => (
-                    <label key={option} className="flex items-center space-x-2">
+                    <label key={option} className="flex items-center space-x-3">
                       <input
                         type="checkbox"
                         checked={editedUser.availability.includes(option)}
                         onChange={() => toggleAvailability(option)}
-                        className="rounded border-blue-600 text-blue-600 focus:ring-blue-400"
+                        className="rounded border-blue-400 text-blue-500 focus:ring-blue-400 h-4 w-4"
                       />
-                      <span className="text-blue-200 text-sm sm:text-base">{option}</span>
+                      <span className="text-blue-700 font-medium">{option}</span>
                     </label>
                   ))}
                 </div>
               ) : (
-                <div className="flex flex-wrap gap-1 sm:gap-2">
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {user.availability.map((time) => (
                     <span
                       key={time}
-                      className="px-2 py-1 sm:px-3 bg-blue-700 text-blue-100 rounded-full text-xs sm:text-sm"
+                      className="px-3 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl text-sm font-medium shadow-sm"
                     >
                       {time}
                     </span>

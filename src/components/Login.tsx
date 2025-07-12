@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, Eye, EyeOff, Mail, Lock, UserPlus, LogIn } from 'lucide-react';
+import { Users, Mail, Lock, Eye, EyeOff, LogIn, UserPlus, Sparkles, Target, Network } from 'lucide-react';
 
 interface LoginProps {
   onLogin: (email: string, password: string) => void;
@@ -57,160 +57,188 @@ const Login: React.FC<LoginProps> = ({ onLogin, onRegister }) => {
     }
   };
 
+  const handleFeatureClick = (feature: string) => {
+    // Add smooth scrolling or navigation to specific sections
+    console.log(`Feature clicked: ${feature}`);
+    // You can add actual functionality here later
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 flex items-center justify-center p-4">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-20 w-32 h-32 bg-blue-300/20 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-40 h-40 bg-blue-400/20 rounded-full blur-xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-blue-300/10 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
-      <div className="relative w-full max-w-md">
+      <div className="relative w-full max-w-lg">
         {/* Logo and Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-500 rounded-2xl shadow-lg mb-4">
-            <Users className="h-8 w-8 text-white" />
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl shadow-xl mb-6 transform hover:scale-105 transition-transform duration-300">
+            <Sparkles className="h-10 w-10 text-white" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">SkillSwap</h1>
-          <p className="text-blue-300 text-sm md:text-base">
-            {isLogin ? 'Welcome back! Sign in to continue' : 'Join our community of skill sharers'}
+          <h1 className="text-4xl md:text-5xl font-bold text-blue-800 mb-3">SkillSwap</h1>
+          <p className="text-blue-600 text-lg md:text-xl font-medium">
+            {isLogin ? 'Welcome back! Sign in to continue your journey' : 'Join our vibrant community of skill sharers'}
           </p>
         </div>
 
         {/* Login/Register Form */}
-        <div className="bg-gradient-to-br from-blue-900/80 to-blue-800/80 backdrop-blur-lg rounded-2xl shadow-2xl border border-blue-700/50 p-6 md:p-8">
+        <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl border border-blue-200/50 p-8">
           {/* Toggle Buttons */}
-          <div className="flex bg-blue-800/50 rounded-xl p-1 mb-6">
+          <div className="flex bg-blue-100/50 rounded-2xl p-2 mb-8">
             <button
               onClick={() => setIsLogin(true)}
-              className={`flex-1 py-2 px-4 rounded-lg transition-all duration-200 text-sm md:text-base ${
+              className={`flex-1 py-3 px-6 rounded-xl transition-all duration-300 text-base font-medium ${
                 isLogin
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'text-blue-300 hover:text-white'
+                  ? 'bg-blue-500 text-white shadow-lg transform scale-105'
+                  : 'text-blue-600 hover:text-blue-700 hover:bg-blue-50'
               }`}
             >
               Sign In
             </button>
             <button
               onClick={() => setIsLogin(false)}
-              className={`flex-1 py-2 px-4 rounded-lg transition-all duration-200 text-sm md:text-base ${
+              className={`flex-1 py-3 px-6 rounded-xl transition-all duration-300 text-base font-medium ${
                 !isLogin
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'text-blue-300 hover:text-white'
+                  ? 'bg-blue-500 text-white shadow-lg transform scale-105'
+                  : 'text-blue-600 hover:text-blue-700 hover:bg-blue-50'
               }`}
             >
               Sign Up
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {/* Name Field (Register only) */}
             {!isLogin && (
               <div>
-                <label className="block text-sm font-medium text-blue-300 mb-2">
+                <label className="block text-base font-medium text-blue-700 mb-3">
                   Full Name
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <UserPlus className="h-5 w-5 text-blue-400" />
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <UserPlus className="h-5 w-5 text-blue-500" />
                   </div>
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    className={`w-full pl-10 pr-4 py-3 bg-blue-800/50 border rounded-xl text-white placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
-                      errors.name ? 'border-red-500' : 'border-blue-600'
+                    className={`w-full pl-12 pr-4 py-4 bg-blue-50/50 border-2 rounded-xl text-blue-800 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all ${
+                      errors.name ? 'border-red-400' : 'border-blue-200'
                     }`}
                     placeholder="Enter your full name"
                   />
                 </div>
                 {errors.name && (
-                  <p className="mt-1 text-sm text-red-400">{errors.name}</p>
+                  <p className="mt-2 text-sm text-red-500 flex items-center">
+                    <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
+                    {errors.name}
+                  </p>
                 )}
               </div>
             )}
 
             {/* Email Field */}
             <div>
-              <label className="block text-sm font-medium text-blue-300 mb-2">
+              <label className="block text-base font-medium text-blue-700 mb-3">
                 Email Address
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-blue-400" />
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <Mail className="h-5 w-5 text-blue-500" />
                 </div>
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
-                  className={`w-full pl-10 pr-4 py-3 bg-blue-800/50 border rounded-xl text-white placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
-                    errors.email ? 'border-red-500' : 'border-blue-600'
+                  className={`w-full pl-12 pr-4 py-4 bg-blue-50/50 border-2 rounded-xl text-blue-800 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all ${
+                    errors.email ? 'border-red-400' : 'border-blue-200'
                   }`}
                   placeholder="Enter your email"
                 />
               </div>
               {errors.email && (
-                <p className="mt-1 text-sm text-red-400">{errors.email}</p>
+                <p className="mt-2 text-sm text-red-500 flex items-center">
+                  <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
+                  {errors.email}
+                </p>
               )}
             </div>
 
             {/* Password Field */}
             <div>
-              <label className="block text-sm font-medium text-blue-300 mb-2">
+              <label className="block text-base font-medium text-blue-700 mb-3">
                 Password
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-blue-400" />
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <Lock className="h-5 w-5 text-blue-500" />
                 </div>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={formData.password}
                   onChange={(e) => handleInputChange('password', e.target.value)}
-                  className={`w-full pl-10 pr-12 py-3 bg-blue-800/50 border rounded-xl text-white placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
-                    errors.password ? 'border-red-500' : 'border-blue-600'
+                  className={`w-full pl-12 pr-12 py-4 bg-blue-50/50 border-2 rounded-xl text-blue-800 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all ${
+                    errors.password ? 'border-red-400' : 'border-blue-200'
                   }`}
                   placeholder="Enter your password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-blue-400 hover:text-blue-300 transition-colors"
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center text-blue-500 hover:text-blue-600 transition-colors"
                 >
                   {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                 </button>
               </div>
               {errors.password && (
-                <p className="mt-1 text-sm text-red-400">{errors.password}</p>
+                <p className="mt-2 text-sm text-red-500 flex items-center">
+                  <span className="w-1 h-1 bg-red-500 rounded-full mr-2"></span>
+                  {errors.password}
+                </p>
               )}
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white py-3 px-4 rounded-xl font-medium transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-blue-900 flex items-center justify-center space-x-2"
+              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-blue-400/50 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl"
             >
-              {isLogin ? <LogIn className="h-5 w-5" /> : <UserPlus className="h-5 w-5" />}
+              {isLogin ? <LogIn className="h-6 w-6" /> : <UserPlus className="h-6 w-6" />}
               <span>{isLogin ? 'Sign In' : 'Create Account'}</span>
             </button>
           </form>
 
           {/* Demo Credentials */}
-          <div className="mt-6 p-4 bg-blue-800/30 rounded-xl border border-blue-700/50">
-            <h4 className="text-sm font-medium text-blue-300 mb-2">Demo Credentials:</h4>
-            <div className="text-xs text-blue-400 space-y-1">
-              <p><strong>User:</strong> john@example.com / password123</p>
-              <p><strong>Admin:</strong> admin@skillswap.com / admin123</p>
+          <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl border border-blue-200">
+            <h4 className="text-base font-semibold text-blue-700 mb-3 flex items-center">
+              <Sparkles className="h-4 w-4 mr-2" />
+              Demo Credentials
+            </h4>
+            <div className="text-sm text-blue-600 space-y-2">
+              <div className="flex items-center justify-between p-3 bg-white/50 rounded-lg">
+                <span className="font-medium">User Account:</span>
+                <span className="font-mono text-xs">shahrutvi020@gmail.com</span>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-white/50 rounded-lg">
+                <span className="font-medium">Admin Account:</span>
+                <span className="font-mono text-xs">admin@skillswap.com</span>
+              </div>
+              <div className="text-center text-xs text-blue-500 mt-2">
+                Password: <span className="font-mono">password123</span> (for both)
+              </div>
             </div>
           </div>
 
           {/* Footer */}
           <div className="mt-6 text-center">
-            <p className="text-blue-400 text-sm">
+            <p className="text-blue-600 text-base">
               {isLogin ? "Don't have an account? " : "Already have an account? "}
               <button
                 onClick={() => setIsLogin(!isLogin)}
-                className="text-blue-300 hover:text-white font-medium transition-colors"
+                className="text-blue-700 hover:text-blue-800 font-semibold transition-colors underline decoration-2 underline-offset-2"
               >
                 {isLogin ? 'Sign up' : 'Sign in'}
               </button>
@@ -218,26 +246,40 @@ const Login: React.FC<LoginProps> = ({ onLogin, onRegister }) => {
           </div>
         </div>
 
-        {/* Features Preview */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-          <div className="bg-blue-900/30 backdrop-blur-sm rounded-xl p-4 border border-blue-700/30">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg mx-auto mb-2 flex items-center justify-center">
-              <Users className="h-4 w-4 text-white" />
+        {/* Interactive Features Preview */}
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <button
+            onClick={() => handleFeatureClick('connect')}
+            className="group bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-200/50 hover:bg-white/80 hover:border-blue-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Users className="h-6 w-6 text-white" />
             </div>
-            <p className="text-blue-300 text-sm">Connect with skilled individuals</p>
-          </div>
-          <div className="bg-blue-900/30 backdrop-blur-sm rounded-xl p-4 border border-blue-700/30">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg mx-auto mb-2 flex items-center justify-center">
-              <LogIn className="h-4 w-4 text-white" />
+            <h3 className="text-blue-800 font-semibold text-base mb-2">Connect with Skilled Individuals</h3>
+            <p className="text-blue-600 text-sm">Find and connect with talented people who share your interests</p>
+          </button>
+          
+          <button
+            onClick={() => handleFeatureClick('exchange')}
+            className="group bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-200/50 hover:bg-white/80 hover:border-blue-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Target className="h-6 w-6 text-white" />
             </div>
-            <p className="text-blue-300 text-sm">Exchange skills seamlessly</p>
-          </div>
-          <div className="bg-blue-900/30 backdrop-blur-sm rounded-xl p-4 border border-blue-700/30">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg mx-auto mb-2 flex items-center justify-center">
-              <UserPlus className="h-4 w-4 text-white" />
+            <h3 className="text-blue-800 font-semibold text-base mb-2">Exchange Skills Seamlessly</h3>
+            <p className="text-blue-600 text-sm">Trade your expertise for new knowledge and experiences</p>
+          </button>
+          
+          <button
+            onClick={() => handleFeatureClick('network')}
+            className="group bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-blue-200/50 hover:bg-white/80 hover:border-blue-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Network className="h-6 w-6 text-white" />
             </div>
-            <p className="text-blue-300 text-sm">Build your skill network</p>
-          </div>
+            <h3 className="text-blue-800 font-semibold text-base mb-2">Build Your Skill Network</h3>
+            <p className="text-blue-600 text-sm">Grow your professional network while learning new skills</p>
+          </button>
         </div>
       </div>
     </div>

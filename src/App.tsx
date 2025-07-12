@@ -15,8 +15,8 @@ function App() {
   // Mock current user (in a real app, this would come from authentication)
   const [currentUser, setCurrentUser] = useState<User>({
     id: '1',
-    name: 'John Doe',
-    email: 'john@example.com',
+    name: 'Rutvi Shah',
+    email: 'shahrutvi020@gmail.com',
     location: 'San Francisco, CA',
     skillsOffered: ['JavaScript', 'React', 'Node.js'],
     skillsWanted: ['Python', 'Machine Learning', 'UI/UX Design'],
@@ -34,8 +34,8 @@ function App() {
     currentUser,
     {
       id: '2',
-      name: 'Sarah Johnson',
-      email: 'sarah@example.com',
+      name: 'Disu Makadiya',
+      email: 'disumakadiya@gmail.com',
       location: 'New York, NY',
       skillsOffered: ['Python', 'Data Science', 'Machine Learning'],
       skillsWanted: ['JavaScript', 'Frontend Development'],
@@ -49,8 +49,8 @@ function App() {
     },
     {
       id: '3',
-      name: 'Mike Chen',
-      email: 'mike@example.com',
+      name: 'Naitri Jasani',
+      email: 'naitrijasani1006@gmail.com',
       location: 'Seattle, WA',
       skillsOffered: ['UI/UX Design', 'Figma', 'Adobe Creative Suite'],
       skillsWanted: ['React', 'TypeScript', 'Backend Development'],
@@ -64,8 +64,8 @@ function App() {
     },
     {
       id: '4',
-      name: 'Emily Rodriguez',
-      email: 'emily@example.com',
+      name: 'Sakshi Kadegiya',
+      email: 'sakshikadegiya.1@gmail.com',
       location: 'Austin, TX',
       skillsOffered: ['Digital Marketing', 'SEO', 'Content Writing'],
       skillsWanted: ['Web Development', 'Analytics'],
@@ -84,8 +84,8 @@ function App() {
       id: 'sr1',
       fromUserId: '2',
       toUserId: '1',
-      fromUserName: 'Sarah Johnson',
-      toUserName: 'John Doe',
+      fromUserName: 'Disu Makadiya',
+      toUserName: 'Rutvi Shah',
       skillOffered: 'Python',
       skillWanted: 'JavaScript',
       message: 'Hi! I\'d love to learn JavaScript from you. I have extensive Python experience and can teach you data science fundamentals.',
@@ -97,8 +97,8 @@ function App() {
       id: 'sr2',
       fromUserId: '1',
       toUserId: '3',
-      fromUserName: 'John Doe',
-      toUserName: 'Mike Chen',
+      fromUserName: 'Rutvi Shah',
+      toUserName: 'Naitri Jasani',
       skillOffered: 'React',
       skillWanted: 'UI/UX Design',
       message: 'Your design portfolio looks amazing! I\'d love to learn UI/UX principles from you.',
@@ -110,8 +110,8 @@ function App() {
       id: 'sr3',
       fromUserId: '4',
       toUserId: '1',
-      fromUserName: 'Emily Rodriguez',
-      toUserName: 'John Doe',
+      fromUserName: 'Sakshi Kadegiya',
+      toUserName: 'Rutvi Shah',
       skillOffered: 'Digital Marketing',
       skillWanted: 'React',
       message: 'I can help you with digital marketing strategies in exchange for React lessons.',
@@ -128,7 +128,7 @@ function App() {
       fromUserId: '1',
       toUserId: '4',
       rating: 5,
-      comment: 'Emily was fantastic! Her marketing insights were incredibly valuable and she was very patient with my questions.',
+      comment: 'Sakshi was fantastic! Her marketing insights were incredibly valuable and she was very patient with my questions.',
       createdAt: new Date('2024-01-26')
     },
     {
@@ -137,7 +137,7 @@ function App() {
       fromUserId: '4',
       toUserId: '1',
       rating: 4,
-      comment: 'John is a great teacher! His React explanations were clear and he provided helpful resources.',
+      comment: 'Rutvi is a great teacher! Her React explanations were clear and she provided helpful resources.',
       createdAt: new Date('2024-01-26')
     }
   ]);
@@ -162,11 +162,11 @@ function App() {
   ]);
 
   // Check if current user is admin (in a real app, this would be based on user roles)
-  const isAdmin = currentUser.email === 'john@example.com'; // Mock admin check
+  const isAdmin = currentUser.email === 'shahrutvi020@gmail.com'; // Mock admin check
 
   const handleLogin = (email: string, password: string) => {
     // Mock authentication - in a real app, this would validate against a backend
-    if ((email === 'john@example.com' && password === 'password123') ||
+    if ((email === 'shahrutvi020@gmail.com' && password === 'password123') ||
         (email === 'admin@skillswap.com' && password === 'admin123')) {
       
       // Update current user based on login
@@ -406,7 +406,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-950 to-blue-900">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200">
       <Navigation
         currentView={currentView}
         onViewChange={setCurrentView}
