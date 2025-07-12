@@ -1,4 +1,4 @@
-# 🌟 Skill Swap Platform — by Rutvi Shah
+# 🌟 Skill Swap Platform — by Rutvi Shah and Team Odoo Hackathon
 
 A collaborative web platform where learners and teachers come together to exchange skills, connect, and grow!  
 This is my personal repository, highlighting my work as a **Full-Stack Developer** on this project. 💻💙
@@ -27,9 +27,9 @@ This is my personal repository, highlighting my work as a **Full-Stack Developer
 ## 📫 Contact Me
 
 Rutvi Shah  
-🎓 22BIT057 | 💼 Full-Stack Developer  
+🎓 24DCS120 | 💼 Full-Stack Developer  
 📧 shahrutvi020@gmail.com
 
 ---
 
-> *Made with love, passion, and endless cups of chai ☕ by Rutvi 💖*
+> *Made with love, passion, and endless cups of chai ☕ by Rutvi and Team💖*
