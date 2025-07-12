@@ -295,6 +295,23 @@ function App() {
     ));
   };
 
+  const handleFeatureClick = (feature: string) => {
+    // Redirect to appropriate tab based on feature clicked
+    switch (feature) {
+      case 'connect':
+        setCurrentView('browse');
+        break;
+      case 'exchange':
+        setCurrentView('requests');
+        break;
+      case 'network':
+        setCurrentView('feedback');
+        break;
+      default:
+        break;
+    }
+  };
+
   const handleSendAdminMessage = (title: string, content: string, type: 'info' | 'warning' | 'maintenance') => {
     const newMessage: AdminMessage = {
       id: `am${Date.now()}`,
@@ -349,7 +366,7 @@ function App() {
 
   // Show login page if not authenticated
   if (!isAuthenticated) {
-    return <Login onLogin={handleLogin} onRegister={handleRegister} />;
+    return <Login onLogin={handleLogin} onRegister={handleRegister} onFeatureClick={handleFeatureClick} />;
   }
 
   const renderCurrentView = () => {
@@ -406,7 +423,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
       <Navigation
         currentView={currentView}
         onViewChange={setCurrentView}

@@ -30,16 +30,16 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onViewChange, curr
   };
 
   return (
-    <nav className="bg-white/80 backdrop-blur-lg shadow-lg sticky top-0 z-50 border-b border-blue-200/50">
+    <nav className="bg-gradient-to-r from-slate-800/95 to-blue-900/95 backdrop-blur-xl shadow-2xl sticky top-0 z-50 border-b border-blue-500/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-              <Users className="h-6 w-6 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg border border-blue-400/30">
+              <Users className="h-7 w-7 text-white" />
             </div>
-            <h1 className="text-xl font-bold text-blue-800 hidden sm:block">SkillSwap</h1>
-            <h1 className="text-lg font-bold text-blue-800 sm:hidden">SS</h1>
+            <h1 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 hidden sm:block">SkillSwap</h1>
+            <h1 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 sm:hidden">SS</h1>
           </div>
           
           {/* Desktop Navigation */}
@@ -52,8 +52,8 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onViewChange, curr
                   onClick={() => handleNavClick(item.id)}
                   className={`px-4 py-2 rounded-xl flex items-center space-x-2 transition-all duration-300 font-medium ${
                     currentView === item.id
-                      ? 'bg-blue-500 text-white shadow-lg transform scale-105'
-                      : 'text-blue-600 hover:bg-blue-50 hover:text-blue-700'
+                      ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-lg transform scale-105'
+                      : 'text-blue-300 hover:bg-slate-700/50 hover:text-blue-200'
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -65,7 +65,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onViewChange, curr
           
           {/* User Info and Actions */}
           <div className="flex items-center space-x-3">
-            <span className="text-blue-700 hidden lg:block text-sm font-medium">
+            <span className="text-blue-200 hidden lg:block text-sm font-medium">
               Welcome, {currentUser?.name || 'User'}
             </span>
             
@@ -98,7 +98,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onViewChange, curr
         
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-blue-200/50 bg-white/95 backdrop-blur-lg">
+          <div className="lg:hidden border-t border-blue-300/50 bg-blue-100/95 backdrop-blur-lg">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {/* User Info */}
               <div className="px-3 py-3 text-blue-700 text-sm border-b border-blue-200/50 mb-2 font-medium">

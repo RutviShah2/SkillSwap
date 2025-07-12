@@ -68,7 +68,7 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
 
   return (
     <div className="max-w-4xl mx-auto p-4 sm:p-6">
-      <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden border border-blue-200/50">
+      <div className="bg-gradient-to-br from-slate-800/90 to-blue-900/90 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-blue-500/30">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 sm:p-8">
           <div className="flex items-center justify-between">
@@ -116,7 +116,7 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
                     type="text"
                     value={editedUser.name}
                     onChange={(e) => setEditedUser({ ...editedUser, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-blue-50/50 border-2 border-blue-200 rounded-xl text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+                    className="w-full px-4 py-3 bg-blue-200/50 border-2 border-blue-300 rounded-xl text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
                   />
                 ) : (
                   <p className="text-blue-800 font-medium">{user.name}</p>
@@ -131,7 +131,7 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser }) => {
                     value={editedUser.location || ''}
                     onChange={(e) => setEditedUser({ ...editedUser, location: e.target.value })}
                     placeholder="Enter your location"
-                    className="w-full px-4 py-3 bg-blue-50/50 border-2 border-blue-200 rounded-xl text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
+                    className="w-full px-4 py-3 bg-blue-200/50 border-2 border-blue-300 rounded-xl text-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all"
                   />
                 ) : (
                   <div className="flex items-center space-x-2 text-blue-800">
