@@ -27,7 +27,6 @@ This is my personal repository, highlighting my work as a **Full-Stack Developer
 ## 📫 Contact Me
 
 Rutvi Shah  
-🎓 24DCS120 | 💼 Full-Stack Developer  
 📧 shahrutvi020@gmail.com
 
 ---
